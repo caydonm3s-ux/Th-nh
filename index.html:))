@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> CÂU LẠC BỘ THPT VÕ NGUYÊN GIÁP </title>
+
+<style>
+html{scroll-behavior:smooth;}
+*{box-sizing:border-box;}
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#667eea,#764ba2);
+transition:0.4s;
+background-attachment:fixed;
+}
+
+/* Progress Bar */
+#progressBar{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+background:#00f7ff;
+width:0%;
+z-index:2000;
+}
+
+/* HEADER */
+header{
+background: linear-gradient(-45deg,#00c6ff,#0072ff,#00f7ff,#1e3c72);
+background-size:300% 300%;
+animation:gradientBG 12s ease infinite;
+padding:60px 20px;
+text-align:center;
+color:white;
+}
+
+header h1{
+letter-spacing:2px;
+text-shadow:0 0 15px rgba(255,255,255,0.6);
+}
+
+@keyframes gradientBG{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* NAV */
+nav{
+position:sticky;
+top:0;
+z-index:1000;
+background:#111;
+padding:15px;
+text-align:center;
+}
+
+nav a{
+color:white;
+margin:0 10px;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+position:relative;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+width:0%;
+height:2px;
+left:0;
+bottom:-5px;
+background:#00f7ff;
+transition:0.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+nav a:hover{color:#00f7ff;}
+
+#darkToggle{
+margin-left:10px;
+padding:6px 12px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+}
+
+/* SECTION */
+section{
+background:white;
+margin:35px auto;
+padding:25px;
+width:90%;
+border-radius:14px;
+box-shadow:0 8px 18px rgba(0,0,0,0.12);
+transition:all 0.6s ease;
+opacity:0;
+transform:translateY(30px);
+backdrop-filter:blur(10px);
+}
+
+section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+section:hover{
+transform:translateY(-6px);
+box-shadow:0 0 25px rgba(0,247,255,0.4);
+}
+
+h2{color:#764ba2;}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:8px;
+text-align:center;
+}
+
+th{
+background:#764ba2;
+color:white;
+}
+
+img{
+width:100%;
+border-radius:10px;
+margin-top:15px;
+transition:0.4s;
+}
+
+img:hover{
+transform:scale(1.03);
+}
+
+/* BUTTON */
+.register-btn{
+margin-top:15px;
+padding:10px 20px;
+border:none;
+background:linear-gradient(45deg,#00c6ff,#0072ff);
+color:white;
+border-radius:25px;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 10px rgba(0,114,255,0.5);
+}
+
+.register-btn:hover{
+transform:scale(1.07);
+box-shadow:0 0 20px rgba(0,247,255,0.8);
+}
+
+/* POPUP */
+.popup{
+display:none;
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.5);
+}
+
+.popup-content{
+background:white;
+padding:25px;
+width:280px;
+margin:120px auto;
+border-radius:15px;
+text-align:center;
+}
+
+/* Scroll Top */
+#topBtn{
+position:fixed;
+bottom:25px;
+right:20px;
+padding:10px 15px;
+border:none;
+border-radius:50%;
+background:#0072ff;
+color:white;
+font-size:18px;
+cursor:pointer;
+display:none;
+}
+
+/* Footer */
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:40px 20px;
+  margin-top:60px;
+}
+
+/* Dark Mode */
+.dark{
+background:#111 !important;
+color:white !important;
+}
+
+.dark section{
+background:#1e1e1e;
+color:white;
+}
+
+.dark nav{background:#000;}
+.dark th{background:#333;}
+</style>
+</head>
+
+<body>
+
+<div id="progressBar"></div>
+
+<header>
+<h1>HỆ THỐNG 7 CÂU LẠC BỘ</h1>
+<p>Phát triển toàn diện – Khơi nguồn đam mê – Bứt phá tương lai</p>
+<h2 id="counter">0 Thành viên tham gia</h2>
+</header>
+
+<nav>
+<a href="#stem">STEM</a>
+<a href="#vannghe">Văn Nghệ</a>
+<a href="#theduc">Thể Dục</a>
+<a href="#tienganh">Tiếng Anh</a>
+<a href="#songxanh">Sống Xanh</a>
+<a href="#phapluat">Pháp Luật</a>
+<a href="#vanhoadoc">Văn Hóa Đọc</a>
+<button id="darkToggle">🌙</button>
+</nav>
+
+<!-- GIỮ NGUYÊN TOÀN BỘ 7 SECTION CỦA BẠN Ở ĐÂY -->
+<!-- (Bạn dán nguyên phần section cũ của bạn vào đây, không thay đổi gì) -->
+<section id="stem">
+<h2>1. CLB STEM</h2>
+
+<p><b>Tôn chỉ:</b> Phát triển tư duy khoa học và sáng tạo công nghệ.</p>
+
+<p><b>Tiêu chí:</b></p>
+<ul>
+<li>Yêu khoa học</li>
+<li>Tư duy logic</li>
+<li>Ham học hỏi</li>
+</ul>
+
+<h3>Lịch hoạt động</h3>
+<table>
+<tr><th>Thời gian</th><th>Nội dung</th></tr>
+<tr><td>Thứ 2</td><td>Thí nghiệm</td></tr>
+</table>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2eAW1KveGu96HXLuGlClo8MAzi4hdCtR5WQBTCBsXtt2ZDd4ePUymVuJl&s=10">
+
+<button class="register-btn">Đăng ký tham gia</button>
+
+<p><b>Người phụ trách:</b> Cô Phan Thị Điệp</p>
+
+</section>
+
+
+<section id="vannghe">
+<h2>2. Câu Lạc Bộ Văn Nghệ</h2>
+<p><b>Tôn chỉ:</b> Phát triển tài năng âm nhạc và biểu diễn.</p>
+<p><b>Tiêu chí:</b></p>
+<ul>
+<li>Yêu ca hát / nhảy múa</li>
+<li>Tự tin trước đám đông</li>
+<li>Nhiệt tình</li>
+</ul>
+
+<h3>Lịch hoạt động</h3>
+<table>
+<tr><th>Thời gian</th><th>Nội dung</th></tr>
+<tr><td>Thứ 3</td><td>Tập luyện biểu diễn</td></tr>
+</table>
+
+<img src="https://gatewaycms.hpu.vn/media/tUaTtsIZAFdCLahca5Sp6yMJkNEo42D_xVL5lPkcoDcY93WIazkpBxbDybLy_JsX.jpg">
+<button class="register-btn">Đăng ký tham gia</button>
+<div>
+<div ="register-btn">Người phụ trách:
+Cô Nguyễn Thị Ly</button>
+</section>
+<section id="vanhoadoc">
+<h2>3. Câu Lạc Bộ Văn Hóa Đọc</h2>
+<p><b>Tôn chỉ:</b> Lan tỏa tình yêu sách và tri thức.</p>
+<p><b>Tiêu chí:</b></p>
+<ul>
+<li>Yêu thích đọc sách</li>
+<li>Suy nghĩ sâu sắc</li>
+<li>Chia sẻ kiến thức</li>
+</ul>
+
+<h3>Lịch hoạt động</h3>
+<table>
+<tr><th>Thời gian</th><th>Nội dung</th></tr>
+<tr><td>Thứ 4</td><td>Chia sẻ sách hay</td></tr>
+</table>
+
+<img src="https://hnm.1cdn.vn/2024/09/14/lymo-kid-books-2.jpeg">
+<button class="register-btn">Đăng ký tham gia</button>
+<div ="register-btn">Người phụ trách:
+Cô Vũ Thị Lan Hương</button>
+</section>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+<div class="popup-content">
+<span id="close">&times;</span>
+<h2>Đăng ký tham gia CLB</h2>
+<input type="text" placeholder="Họ và tên">
+<input type="email" placeholder="Email">
+<button>Gửi</button>
+</div>
+</div>
+
+<button id="topBtn">↑</button>
+<section id="theduc">
+<h2>4. Câu Lạc Bộ Thể Dục</h2>
+<p><b>Tôn chỉ:</b> Rèn luyện thể chất và nâng cao sức khỏe.</p>
+<p><b>Tiêu chí:</b></p>
+<ul>
+<li>Yêu thể thao</li>
+<li>Kỷ luật</li>
+<li>Chăm chỉ luyện tập</li>
+</ul>
+
+<h3>Lịch hoạt động</h3>
+<table>
+<tr><th>Thời gian</th><th>Nội dung</th></tr>
+<tr><td>Thứ 5</td><td>Luyện tập thể lực</td></tr>
+</table>
+
+<img src="https://dormitory.tdtu.edu.vn/sites/dormitory/files/inline-images/CLB-1.jpg">
+<button class="register-btn">Đăng ký tham gia</button>
+<div ="register-btn">Người phụ trách:
+Thầy Đỗ Tấn Khương</button>
+</section>
+<section id="tienganh">
+<h2>5. Câu Lạc Bộ Tiếng Anh</h2>
+<p><b>Tôn chỉ:</b> Nâng cao kỹ năng giao tiếp và hội nhập quốc tế.</p>
+<p><b>Tiêu chí:</b></p>
+<ul>
+<li>Yêu thích ngoại ngữ</li>
+<li>Chăm luyện nói</li>
+<li>Tự tin giao tiếp</li>
+</ul>
+
+<h3>Lịch hoạt động</h3>
+<table>
+<tr><th>Thời gian</th><th>Nội dung</th></tr>
+<tr><td>Thứ 6</td><td>Speaking Practice</td></tr>
+
+                                               </table>
+                                               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3zK1cmRgAqFojgdPw7n0XAkeh0aZVvynyiknBoTs8GC3mPrQ0BZwMD7M&s=10">
+<button class="register-btn">Đăng ký tham gia</button>
+<div ="register-btn">Người phụ trách:
+Cô Nguyễn  Thanh Nhã</button>
+
+</section>
+<section id="songxanh">
+<h2>6. Câu Lạc Bộ Sống Xanh</h2>
+<p><b>Tôn chỉ:</b> Bảo vệ môi trường và phát triển bền vững.</p>
+<p><b>Tiêu chí:</b></p>
+<ul>
+<li>Yêu thiên nhiên</li>
+<li>Có ý thức bảo vệ môi trường</li>
+<li>Tích cực tham gia hoạt động</li>
+</ul>
+
+<h3>Lịch hoạt động</h3>
+<table>
+<tr><th>Thời gian</th><th>Nội dung</th></tr>
+<tr><td>Thứ 7</td><td>Trồng cây</td></tr>
+</table>
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS6lNbG58x324iKIV0Cu2Xqez6GW-Q9NAtv65oOI3oRg&s">
+<button class="register-btn">Đăng ký tham gia</button>
+<div ="register-btn">Người phụ trách:
+Cô Nguyễn Thị Thúy Hằng</button>
+</section>
+<section id="phapluat">
+<h2>7. Câu Lạc Bộ Pháp Luật</h2>
+<p><b>Tôn chỉ:</b> Trang bị kiến thức pháp luật cho học sinh.</p>
+<p><b>Tiêu chí:</b></p>
+<ul>
+<li>Quan tâm đến luật pháp</li>
+<li>Tư duy phản biện</li>
+<li>Thích tranh luận</li>
+</ul>
+
+<h3>Lịch hoạt động</h3>
+<table>
+<tr><th>Thời gian</th><th>Nội dung</th></tr>
+<tr><td>Chủ nhật </td><td>Tìm hiểu luật học đường và Phiên tòa giả định<</td></tr>
+</table>
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrRzAxFAf0yuDrdE2dZCaDyUjxoAfdnaMcEM4NexMlW0pYzkPk46fAep4&s=10">
+<button class="register-btn">Đăng ký tham gia</button>
+<div ="register-btn">Người phụ trách:
+Cô Phạm Thị Tám </button>
+</section>
+
+<footer>
+<h2>THPT Võ Nguyên Giáp</h2>
+<p>Hệ thống 7 câu lạc bộ – Phát triển toàn diện – Vững bước tương lai</p>
+<p>© 2026 | Thiết kế bởi Phát 🚀</p>
+</footer>
+
+<script>
+
+/* Progress Bar */
+window.addEventListener("scroll",()=>{
+let scrollTop=document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+document.getElementById("progressBar").style.width=(scrollTop/height)*100+"%";
+});
+
+/* Counter */
+let count=0,target=528;
+let counter=document.getElementById("counter");
+let interval=setInterval(()=>{
+count+=6;
+counter.innerText=count+" Thành viên tham gia";
+if(count>=target){
+counter.innerText=target+" Thành viên tham gia";
+clearInterval(interval);
+}
+},20);
+
+/* Dark Mode */
+document.getElementById("darkToggle").onclick=function(){
+document.body.classList.toggle("dark");
+};
+
+/* Scroll Top */
+let topBtn=document.getElementById("topBtn");
+window.onscroll=function(){
+topBtn.style.display=document.documentElement.scrollTop>300?"block":"none";
+};
+topBtn.onclick=function(){
+window.scrollTo({top:0,behavior:'smooth'});
+};
+
+/* Popup */
+let popup=document.getElementById("popup");
+  document.querySelectorAll(".register-btn").forEach(btn=>{
+btn.onclick=function(){popup.style.display="block";}
+});
+document.getElementById("close").onclick=function(){
+popup.style.display="none";
+};
+
+/* Scroll animation */
+const sections=document.querySelectorAll("section");
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+},{threshold:0.15});
+sections.forEach((sec,index)=>{
+sec.style.transitionDelay=index*0.1+"s";
+observer.observe(sec);
+});
+
+/* Header fade */
+window.addEventListener("scroll",()=>{
+let header=document.querySelector("header");
+header.style.opacity=1-(window.scrollY/600);
+});
+
+/* Parallax */
+window.addEventListener("scroll",()=>{
+document.body.style.backgroundPositionY=window.scrollY*0.2+"px";
+});
+
+</script>
+
+</body>
+</html>
+  
